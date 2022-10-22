@@ -1,0 +1,89 @@
+<html>
+ <head>
+ <style>
+
+ body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+
+ }
+
+  h1 {
+    font-size: 5rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  p {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .email {
+    font-size: 2rem;
+  }
+
+  .email-input {
+    font-size: 2rem
+  }
+
+  .login-input {
+    font-size: 2rem;
+    text-decoration: none;
+    color: black;
+    border-style: solid;
+    padding: 0.5rem;
+    border-radius: 1rem;
+    background: white
+  }
+
+.input {
+    font-size: 2rem;
+    padding-right: 4rem;
+}
+
+a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: black;
+    border-style: solid;
+    padding: 0.5rem;
+    border-radius: 1rem;
+}
+
+.redirect-buttons {
+
+}
+
+.homepage-button {
+    margin-right: 2rem;
+}
+ </style>
+ </head>
+ <body>
+ <form action='/login' method="POST">
+ <h1>Login here</h1>
+  <p class="email">Email address: <input class="email-input" type="text" name="email" required></p>
+  <p>Password: <input class="input" type="text" name="password" required></p>
+
+
+  <p><input class="login-input" type="submit" value="Login"></p>
+ </form>
+ <div class="redirect-buttons">
+    <a class="homepage-button" href="/">Return to homepage</a>
+    <a href="/sign-up/new">Sign up for Makers BnB</a>
+ </div>
+
+ </body>
+</html>

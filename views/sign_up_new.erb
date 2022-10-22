@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 100px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                font-size: 2rem;
+            }
+
+            .name-input {
+                font-size: 2rem;
+                padding-right: 4.6rem;    
+            }
+
+            .username-input {
+                font-size: 2rem;
+                padding-right: 1.2rem;   
+            }
+
+            .email-input {
+                font-size: 2rem;
+                padding-right: 4.6rem;  
+            }
+
+            .password-input {
+                font-size: 2rem;
+                padding-right: 1.6rem;
+            }
+
+            .submit {
+                margin-bottom: -2rem;
+            }
+
+            .submit-button {
+                margin-top: 1rem;
+                text-decoration: none;
+                color: black;
+                border-style: solid;
+                padding: 0.5rem;
+                border-radius: 1rem;
+                margin-bottom: 1rem;
+                width: fit-content;
+                font-size: 2rem;
+                background-color: white;
+                cursor: pointer;
+            }
+            .back-button {
+                text-decoration: none;
+                color: black;
+                border-style: solid;
+                padding: 0.5rem;
+                border-radius: 1rem;
+                margin-bottom: 1rem;
+            }
+
+            h1 {
+                display: flex;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <form action ='/sing-up/new' method= 'POST'>
+        <div>
+        <h1>
+            Sign up Here
+        </h1>
+        <p>Name: <input class="name-input" type = 'text' name = 'name' required></p>
+        <p>Username: <input class="username-input" type = 'text' name = 'username' required></p>
+        <p>Email: <input class="email-input" type = 'text' name = 'email' required></p>
+        <p>Password: <input class="password-input" type = 'text' name = 'password' required></p>
+        <p class="submit"><input class="submit-button" type ='submit' value='Submit' required></p>
+
+        </div>
+
+        </form>
+        <p><a class="back-button" href = '/'>Back</a></p>
+    </body>
+</html>

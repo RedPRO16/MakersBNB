@@ -1,0 +1,82 @@
+<html>
+    <head>
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 100px;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                font-size: 2rem;
+            }
+
+            .name {
+                text-decoration: underline;
+            }
+
+            .description {
+                text-decoration: underline;
+            }
+
+            .price {
+                text-decoration: underline;
+            }
+
+            .date-input {
+                font-size: 2rem;
+                margin-left: 0.5rem;
+            }
+
+            .request-input {
+                margin-top: 1rem;
+                text-decoration: none;
+                color: black;
+                border-style: solid;
+                padding: 0.5rem;
+                border-radius: 1rem;
+                margin-bottom: 1rem;
+                width: fit-content;
+                font-size: 2rem;
+                background-color: white;
+                cursor: pointer;
+                margin-left: 0.5rem;
+                border-color: black;
+            }
+
+            .back-button {
+                text-decoration: none;
+                color: black;
+                border-style: solid;
+                padding: 0.5rem;
+                border-radius: 1rem;
+                margin-bottom: 1rem;
+                font-size: 2rem;
+            }
+        </style> 
+    </head>
+    <body>
+    <h1>Individual Spaces</h1>
+        <p class="name">Name: <%= @space.name %></p>
+        <p class="description">Description: <%= @space.description %></p>
+        <p class="price">Price: £<%= @space.price_to_string %></p>
+        <p>Date Availability Start: <%= @space.date_availability_start %></p>
+        <p>Date Availability End: <%= @space.date_availability_end %></p>
+    
+    <form action='/spaces/<%= @space_id %>' method="POST">
+    <h1>Request to book</h1>
+    <p>Date:<input class="date-input" type="date" name="date" required min="<%= @today %>"></p>
+    <p>Click here to request:<input class="request-input" type="submit" value="Request"></p>
+    </form>
+    <% if @unavailable_date %>
+      <p><%= @unavailable_date %> is unavailable</p>
+    <% end %>
+    <a class="back-button" href="/spaces">Back</a>
+        </body>
+
+</html>

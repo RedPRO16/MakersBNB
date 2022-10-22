@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <style>
+   ul#menu li {
+  display:inline;
+  margin-right: 1rem;
+  font-size: 2rem
+}
+
+ul#menu {
+  font-size: 2rem
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.title {
+  font-size: 5rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  border-style: solid;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+</style>
+        <title>MakersBnB</title>
+
+        <!--
+            Head to https://github.com/makersacademy/web-applications/blob/main/pills/loading_css_or_static_files.md
+            If you're wondering how the CSS file below is being loaded.
+        -->
+        <link rel="stylesheet" href="/style.css" >
+    </head>
+    <body>
+    <h1 class="title">Welcome to MakersBnB</h1>
+
+<ul id="menu">
+  <% if @user_id.nil? %>
+    <li><a href="/login">Login</a></li>
+    <li><a href="/sign-up/new">Sign up</a></li>
+  <% end %>
+  <% if !@user_id.nil? %>
+    <li><a href="/logout">Log out</a></li>
+  <% end %>
+    <li><a href="/spaces">All Spaces</a></li>
+  <% if !@user_id.nil? %>
+    <li><a href="/manage-spaces">Manage spaces</a></li>
+  <% end %>
+</ul>
+
+    </body>
+</html>

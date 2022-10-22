@@ -1,0 +1,103 @@
+ <html>
+       <head>
+              <style>
+
+              body {
+                     display: flex;
+                     justify-content: center;
+                     align-items: center;
+                     flex-direction: column;
+                     height: 100px;
+                     position: absolute;
+                     top: 0;
+                     bottom: 0;
+                     left: 0;
+                     right: 0;
+                     margin: auto;
+                     font-size: 2rem;
+              }
+
+              .name-input {
+                     font-size: 2rem;
+                     padding-right: 4.6rem;
+              }
+
+              .description-input {
+                     font-size: 2rem;
+              }
+              
+              .price-input {
+                     font-size: 2rem;
+                     padding-right: 4.6rem;
+              }
+
+              input#from {
+                     font-size: 2rem;  
+              }
+
+              input#to {
+                     font-size: 2rem;
+              }
+
+              .submit-button {
+                     margin-top: 1rem;
+                     text-decoration: none;
+                     color: black;
+                     border-style: solid;
+                     padding: 0.5rem;
+                     border-radius: 1rem;
+                     margin-bottom: 1rem;
+                     width: fit-content;
+                     font-size: 2rem;
+                     background-color: white;
+                     cursor: pointer;    
+
+              }
+
+              .back-button {
+                     text-decoration: none;
+                     color: black;
+                     border-style: solid;
+                     padding: 0.5rem;
+                     border-radius: 1rem;
+                     margin-bottom: 1rem;
+              }
+
+              h2 {
+                     display: flex;
+                     justify-content: center;   
+              }
+
+              </style>
+       </head>
+       </body>
+              <form action="/manage-spaces/new" method="POST">
+              <h2>Add your space here</h2>
+              <br>
+              <p>Name: <input class="name-input" type="text" name="name" required></p>
+              <p>Description: <input class="description-input" type="text" name="description" required></p>
+              <p>Price: £<input class="price-input" type="number" name="price" required></p>
+              <p>Date from: <input type="date" id="from" name="date_availability_start"
+                     value="<%= @today %>"
+                     min="<%= @today %>" max="2030-12-31" required></p>
+              <p>Date to: <input type="date" id="to" name="date_availability_end"
+                     value="<%= @tomorrow %>"
+                     min="<%= @tomorrow %>" max="2030-12-31" required></p>
+                     <p><input class="submit-button" type="submit" value="Submit"></p>
+              </form>
+
+              <% if @invalid_dates %>
+                     <h2>Please enter a start date that begins before the end date</h3>
+              <% end %>
+
+              <% if @invalid_date %>
+                     <h2> Please choose a date in the present or future.</h2>
+              <% end %>
+
+
+              <a class="back-button" href="/manage-spaces">Back</a>
+       <body>
+
+ </html>
+ 
+

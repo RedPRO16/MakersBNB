@@ -1,0 +1,94 @@
+<html>
+<head>
+  <style>
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      font-size: 2rem;
+    }
+
+    .name-input {
+      font-size: 2rem;
+      padding-right: 4.6rem;
+    }
+
+    .description-input {
+      font-size: 2rem;
+      padding-right: 0rem;
+    }
+
+    .price-input {
+      font-size: 2rem;
+      padding-right: 5rem;
+    }
+
+    input#from {
+      font-size: 2rem;
+    }
+    input#to {
+      font-size: 2rem;
+      margin-left: 0rem
+    }
+    .update-button {
+      margin-top: 1rem;
+      text-decoration: none;
+      color: black;
+      border-style: solid;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      width: fit-content;
+      font-size: 2rem;
+      background-color: white;
+      cursor: pointer;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: black;
+      border-style: solid;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+
+  </style>
+</head>
+
+<body>
+  <form action='/manage-spaces/edit/<%= @space_id %>' method="POST">
+          <h1>Edit your space here</h1>
+          <p>Name:<input class="name-input" type="text" name="name" required></p>
+            <p>Description:<input class="description-input"type="text" name="description" required></p>
+          <p>Price:<input class="price-input" type="number" name="price" required></p>
+        <p> Date from: <input type="date" id="from" name="date_availability_start"
+            value="<%= @today %>"
+            min="<%= @today %>" max="2030-12-31" required></p>
+          <p>Date to: <input type="date" id="to" name="date_availability_end"
+            value="<%= @tomorrow %>"
+            min="<%= @tomorrow %>" max="2030-12-31" required></p>
+          <p><input class="update-button" type="submit" value="Update"></p>
+  </form>
+  <% if @invalid_dates %>
+    <h2>Please enter a start date that begins before the end date</h3>
+  <% end %>
+
+  <% if @invalid_date %>
+     <h2>Please choose a date in the present or future.</h2>
+  <% end %>
+
+  <a class="back-button" href="/manage-spaces">Back</a>
+</body>
+
+</html>
+

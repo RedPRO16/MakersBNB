@@ -1,0 +1,135 @@
+
+
+<html>
+
+<head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      font-size: 2rem;
+    }
+
+    .create-button {
+      text-decoration: none;
+      color: black;
+      border-style: solid;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .back-button {
+      text-decoration: none;
+      color: black;
+      border-style: solid;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .edit {
+      margin-top: 1rem;
+      text-decoration: none;
+      color: black;
+      border-style: solid;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      width: fit-content;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+    }
+
+    select#booking {
+      margin-top: 1rem;
+      text-decoration: none;
+      color: black;
+      border-style: solid;
+      padding: 0.5rem;
+      margin-bottom: 1rem;
+      width: fit-content;
+      font-size: 1.2rem;
+    }
+
+    .submit-button {
+      margin-top: 1rem;
+      text-decoration: none;
+      color: black;
+      border-style: solid;
+      padding: 0.5rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+      width: fit-content;
+      font-size: 2rem;
+      background-color: white;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <h1>My Spaces</h1>
+  <div>
+    <div>
+      <% @spaces.each do |space| %>
+        <%= space.name %><br>
+        <%= space.description %><br>
+        £<%= space.price_to_string %> per night<br>
+        Available from <%= space.date_availability_start %><br>
+        Available to <%= space.date_availability_end %>
+        <br>
+        <div class="edit">
+          <b><a href='/manage-spaces/edit/<%= space.id %>'>Edit</a></b>
+        </div>
+        
+    </div>
+
+    <div>
+        <% if !space.bookings.nil? %>
+        <br>
+          <% space.bookings.each do |booking| %>
+          Booking request from <%= booking.guest_name %>, @<%= booking.guest_username %><br>
+          Date requested: <%= booking.date %><br>
+          <% if booking.is_booked %>
+        This booking has been confirmed.
+      <% else %>
+          <form action="/manage-spaces/<%=booking.id%>" method="POST">
+        <label for="booking">Confirm or decline</label>
+        <select name="booking" id="booking">
+            <option value="confirm">Confirm</option>
+            <option value="decline">Decline</option>
+        </select>
+        <br><br>
+          <input class="submit-button" type="submit" value="Submit">
+      </form>
+          <%end%>
+          <% end %>
+        <% end %>
+        </div>
+      <% end %>
+
+
+  </div>
+          
+  <div>
+    <a class="create-button" href="/manage-spaces/new">Create new space</a>
+    <a class="back-button" href="/">Back</a>
+  </div>
+
+</body>
+
+
+</html>
